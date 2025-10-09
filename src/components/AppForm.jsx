@@ -8,14 +8,13 @@ const initialArticle = {
     is_published: false
 }
 
-export default function AppForm({ newId, setArticles }) {
+export default function AppForm({ setArticles }) {
 
     const [newArticle, setNewArticle] = useState(initialArticle)
 
 
     function handleChange(e) {
         const value = (e.target.type === "checkbox") ? e.target.checked : e.target.value
-        console.log(value);
         setNewArticle({
             ...newArticle,
             [e.target.name]: value
@@ -27,19 +26,18 @@ export default function AppForm({ newId, setArticles }) {
     function handleSubmit(e) {
         e.preventDefault()
         if (validateTitle(newArticle.title)) {
-            setNewArticle({
-                ...newArticle,
-                id: newId
-            })
             setArticles(newArticle)
             console.log(`L'articolo ${newArticle.title} è stato aggiunto`);
         } else {
             alert("Il titolo è troppo corto, inserirne uno di almeno 5 caratteri")
         }
-        setNewArticle("")
+        setNewArticle(initialArticle)
     }
 
     function validateTitle(title) {
+        
+        console.log(title);
+        
         return (title.length >= 5)
     }
 
@@ -74,7 +72,7 @@ export default function AppForm({ newId, setArticles }) {
                             </div>
                             <div className="input-group mb-3">
                                 <div className="input-group-text">
-                                    <input type="checkbox" className="form-check-input" id="is_published" name='is_published' value={newArticle.author.is_published} onChange={handleChange} />
+                                    <input type="checkbox" className="form-check-input" id="is_published" name='is_published' value={newArticle.is_published} onChange={handleChange} />
                                 </div>
                                 <label htmlFor="is_published" className="col-form-label form-control">Pubblicato</label>
                             </div>

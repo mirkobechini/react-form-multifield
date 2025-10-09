@@ -7,13 +7,15 @@ import AppForm from './components/AppForm.jsx'
 //import Data
 import articles from './data/articoli.js'
 
+
+
 function App() {
 
   const [liveArticles, setLiveArticles] = useState(articles)
 
   function addLiveArticle(newArticle) {
     const newId = liveArticles[liveArticles.length - 1].id + 1
-    setLiveArticles([...liveArticles, { id: newId, title: newArticle, content: "" }])
+    setLiveArticles([...liveArticles, { id: newId,...newArticle }])
   }
 
   function delLiveArticle(id) {
@@ -25,8 +27,13 @@ function App() {
     <>
       <div className="container my-5">
         <div className="row">
-          <AppShowList items={liveArticles} delItem={delLiveArticle} />
-          <AppForm newId={liveArticles[liveArticles.length-1].id} setArticles={addLiveArticle} />
+          <AppShowList
+            items={liveArticles.filter(liveArticle => liveArticle.is_published)}
+            delItem={delLiveArticle}
+          />
+          <AppForm
+            setArticles={addLiveArticle}
+          />
         </div>
       </div>
     </>
