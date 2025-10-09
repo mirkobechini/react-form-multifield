@@ -23,9 +23,12 @@ function App() {
 
   return (
     <>
-
-      <AppShowList items={liveArticles} delItem={delLiveArticle} />
-      <AppForm setItems={addLiveArticle} />
+      <div className="container my-5">
+        <div className="row">
+          <AppShowList items={liveArticles} delItem={delLiveArticle} />
+          <AppForm setItems={addLiveArticle} />
+        </div>
+      </div>
     </>
   )
 }

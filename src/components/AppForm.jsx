@@ -1,7 +1,7 @@
 import { useState } from 'react'
 
-export default function AppForm({setItems }) {
-    
+export default function AppForm({ setItems }) {
+
     const [newItem, setNewItem] = useState('')
 
     function handleSubmit(e) {
@@ -21,22 +21,20 @@ export default function AppForm({setItems }) {
 
     return (
         <>
-            <div className="container my-4">
-                <div className="row">
-                    <div className="card p-0">
-                        <div className="card-header">
-                            Aggiungi articolo
-                        </div>
-                        <div className="card-body">
-                            <form action="submit" onSubmit={handleSubmit}>
-                                <label htmlFor="articleTitle" className="col-form-label pe-2">Titolo</label>
-                                <input type="text" className="form-control" id="articleTitle" value={newItem} onChange={(e) => setNewItem(e.target.value)} required />
-                                <button type="submit" className="btn btn-primary d-block mt-3">
-                                    Aggiungi
-                                </button>
+            <div className="col-4">
+                <div className="card p-0">
+                    <div className="card-header">
+                        Aggiungi articolo
+                    </div>
+                    <div className="card-body">
+                        <form action="submit" onSubmit={handleSubmit}>
+                            <label htmlFor="articleTitle" className="col-form-label pe-2">Titolo</label>
+                            <input type="text" className="form-control" id="articleTitle" value={newItem} onChange={(e) => setNewItem(e.target.value)} required />
+                            <button type="submit" className="btn btn-primary d-block mt-3">
+                                Aggiungi
+                            </button>
 
-                            </form>
-                        </div>
+                        </form>
                     </div>
                 </div>
             </div>
