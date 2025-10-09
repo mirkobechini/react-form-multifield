@@ -26,7 +26,7 @@ function App() {
       <div className="container my-5">
         <div className="row">
           <AppShowList items={liveArticles} delItem={delLiveArticle} />
-          <AppForm setItems={addLiveArticle} />
+          <AppForm newId={liveArticles[liveArticles.length-1].id} setArticles={addLiveArticle} />
         </div>
       </div>
     </>
