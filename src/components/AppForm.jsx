@@ -72,7 +72,7 @@ export default function AppForm({ setArticles }) {
                             </div>
                             <div className="input-group mb-3">
                                 <div className="input-group-text">
-                                    <input type="checkbox" className="form-check-input" id="is_published" name='is_published' value={newArticle.is_published} onChange={handleChange} />
+                                    <input type="checkbox" className="form-check-input" id="is_published" name='is_published' checked={newArticle.is_published} onChange={handleChange} />
                                 </div>
                                 <label htmlFor="is_published" className="col-form-label form-control">Pubblicato</label>
                             </div>
