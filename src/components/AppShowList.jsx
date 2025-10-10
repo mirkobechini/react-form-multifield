@@ -5,6 +5,27 @@ export default function AppShowList({ items, delItem }) {
         console.log(`L'articolo con id ${id} è stato cancellato`);
     }
 
+    function labelColor(category) {
+        let bg_color = "primary"
+
+        switch (category) {
+
+            case "FrontEnd":
+                bg_color = "primary"
+                break;
+            case "BackEnd":
+                bg_color = "warning"
+                break;
+            case "UI/UX":
+                bg_color = "danger"
+                break;
+        }
+        
+        return bg_color
+    }
+
+
+
     return (
         <>
 
@@ -14,13 +35,17 @@ export default function AppShowList({ items, delItem }) {
                         <h2>Articles</h2>
                     </div>
                     <div className="card-body">
-                        <ul className="list-group ">
+                        <ul className="list-group">
                             {
                                 items.map(item =>
-                                    <li className="list-group-item" key={item.id}>
-                                        <span>{item.title}</span>
-
-                                        <button className="btn btn-danger mx-4" onClick={() => handleTrash(item.id)}>
+                                    <li className={`list-group-item d-flex flex-column gap-2 position-relative border border-${labelColor(item.category)} bg-${labelColor(item.category)}-subtle rounded mb-4`} key={item.id}>
+                                        <h3 className="d-inline" >{item.title}</h3>
+                                        <p>
+                                            {item.content}
+                                        </p>
+                                        <strong>{item.author}</strong>
+                                        <label className={`badge position-absolute top-0 end-0 bg-${labelColor(item.category)}`} > {item.category} </label>
+                                        <button className="btn btn-danger align-self-start" onClick={() => handleTrash(item.id)}>
                                             <i className="bi bi-trash"></i>
                                         </button>
                                     </li>
